@@ -40,9 +40,106 @@ td:last-child{border-right:2.5px solid #2d1b4e;border-radius:0 12px 12px 0}
 .role-dev{background:#ffe26a}.role-guru{background:#a0e7e5}
 .editInput{padding:6px 8px;border-radius:8px;border:2px solid #2d1b4e;font-size:11px;width:120px;max-width:120px}
 @media(max-width:600px){.editInput{width:95px;max-width:95px;font-size:10px}}
-.rekapGrid{display:grid;grid-template-columns:1fr;gap:8px;margin-top:12px;width:100%}
+
+/* REKAP FULL LEBAR DI HP & DESKTOP */
+.rekapGrid{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:10px;
+  margin-top:12px;
+  width:100%;
+}
+.rekapBox{
+  width:100% !important;
+  border:2.5px solid #2d1b4e;
+  border-radius:14px;
+  padding:14px 16px;
+  background:#ffe26a;
+  text-align:center;
+}
+.rekapBox h4{
+  text-align:center;
+  margin:0 0 8px 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+}
+.rekapBox div{
+  text-align:center;
+}
+
 @media(min-width:600px){.rekapGrid{grid-template-columns:1fr 1fr}}
-.rekapBox{border:2.5px solid #2d1b4e;border-radius:14px;padding:12px;background:#ffe26a;width:100%}
 #dashData{overflow:visible!important;padding-bottom:20px}
 footer{margin-top:24px;background:#fff;border-top:3px solid #2d1b4e;padding:18px 12px;text-align:center;font-size:12px;font-weight:700}
-footer span{background:#2d1b4e;color:#fff;padding:4px 10px;border-radius:8px;margin-right:6px}
+
+#filterGrid{grid-template-columns:1fr 1fr}
+@media(min-width:900px){.filterGrid{grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr 100px}}
+
+/* FIX LAYOUT - HAPUS YANG LAMA */
+#filterGridNew{display:grid !important;grid-template-columns:1fr 1fr !important;gap:10px;margin-top:12px}
+#filterGridNew .fInput{width:100%}
+
+/* BIAR TETAP 2 KOLOM DI HP */
+@media(max-width:600px){
+  #filterGridNew{grid-template-columns:1fr 1fr !important}
+}
+
+/* ANIMASI SEMUA TOMBOL */
+.btn{transition:all .18s cubic-bezier(.2,.8,.2,1);will-change:transform,box-shadow}
+.btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:5px 7px 0 #2d1b4e;filter:brightness(1.05)}
+.btn:active{transform:translateY(1px) scale(0.97);box-shadow:2px 2px 0 #2d1b4e}
+.btn-black:hover{background:#3d2a6a}
+.btn-yellow:hover{background:#ffe97a}
+.fInput, .dateWrap input{transition:.15s}
+.fInput:hover, .dateWrap input:hover{transform:translateY(-1px);box-shadow:2px 3px 0 #2d1b4e}
+.fInput:focus, .dateWrap input:focus{transform:translateY(-1px) scale(1.01);box-shadow:3px 4px 0 #2d1b4e;outline:none}
+
+/* INPUT HOVER JUGA */
+.fInput, .dateWrap input{transition:.15s}
+.fInput:hover, .dateWrap input:hover{transform:translateY(-1px);box-shadow:2px 3px 0 #2d1b4e}
+/* .fInput:focus, .dateWrap input:focus{transform:translateY(-1px) scale(1.01);box-shadow:3px 4px 0 #2d1b4e;outline:none} */
+
+/* BADGE KELAS KECIL BIAR GAK JEBOL */
+@media(max-width:400px){#filterGridNew{grid-template-columns:1fr}}
+
+
+/* FIX LAYAR LEBAR - ZOOM KECIL */
+.wrap{
+  max-width:1200px;
+  margin:0 auto;
+  width:100%;
+}
+.hero{
+  display:block !important;
+  width:100% !important;
+}
+.hero .card{
+  width:100% !important;
+  max-width:100% !important;
+  box-sizing:border-box;
+}
+.stat{
+  display:grid !important;
+  grid-template-columns:repeat(4,1fr) !important;
+  gap:8px !important;
+  width:100% !important;
+}
+
+/* Desktop beneran */
+@media (min-width:900px){
+  .stickyNav{
+    padding:14px 20px 14px 20px;
+    margin:-12px -20px 16px -20px;
+  }
+  .filterGrid{
+    grid-template-columns:1fr 1fr !important;
+  }
+}
+
+/* HP tetep aman */
+@media (max-width:600px){
+  .stat{
+    grid-template-columns:repeat(4,1fr) !important;
+  }
+}

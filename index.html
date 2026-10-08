@@ -3,10 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Dashboard Guru</title>
-
 <meta name="description" content="Dashboard Guru • Data Absensi Realtime, Filter Mapel & Guru, Download Excel" />
-
-<!-- OG WAJIB LENGKAP -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dd-ace.vercel.app/">
 <meta property="og:title" content="Dashboard Guru - XI F Kelas Random">
@@ -17,43 +14,91 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Dashboard Guru XI F">
-
-<!-- Twitter WA -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://dd-ace.vercel.app/">
 <meta name="twitter:title" content="Dashboard Guru - XI F Kelas Random">
 <meta name="twitter:description" content="Dashboard Guru • Data Absensi Realtime, Filter Mapel & Guru, Download Excel">
 <meta name="twitter:image" content="https://dd-ace.vercel.app/og-guru.png">
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js"></script>
 <link rel="stylesheet" href="./style.css" type="text/css" media="all" />
+<style>
+/* NAVBAR TRANSPARAN + BLUR */
+.stickyNav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  padding:12px 12px 12px 12px;
+  margin:-12px -12px 12px -12px;
+  border-bottom:2px solid rgba(0, 0, 0, 0);
+  transition: all .3s ease;
+}
+/* Pas login kebuka, navbar ilang total */
+body.login-open .stickyNav{
+  opacity:0 !important;
+  pointer-events:none !important;
+  transform:translateY(-100%) !important;
+  visibility:hidden !important;
+}
+#loginModal{
+  z-index:99999 !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  background: rgba(0,0,0,0.5) !important;
+}
+.stickyNav.scrolled{
+  background: rgba(66, 68, 90, 0); /* pas di scroll jadi agak solid dikit */
+/*   box-shadow:0 8px 30px rgba(45,27,78,0.18);
+border-bottom:2px solid rgba(45,27,78,0.2); */
+}
+.stickyNav .card{
+  margin-top:10px;
+  margin-bottom:0;
+  background: rgba(0, 0, 0, 0); /* card dalamnya juga ikut transparan dikit */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+</style>
 </head>
 <body>
 <div class="wrap">
-<div style="display:flex;justify-content:space-between;align-items:center">
-  <div style="font-weight:700;font-size:20px"><span style="background:#2d1b4e;color:#fff;padding:6px 10px;border-radius:10px">XI F</span> Kelas Random✨</div>
-  <div><button class="btn btn-black" id="btnLogin" onclick="openL()">Login</button><button class="btn btn-black hidden" id="btnLogout" onclick="logout()">Logout</button></div>
+
+<!-- === INI YANG JADI NAVBAR DIAM === -->
+<div id="stickyNavbar" class="stickyNav">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+    <div style="font-weight:700;font-size:15px;line-height:1.2;display:flex;align-items:center;gap:8px"><span style="background:#2d1b4e;color:#fff;padding:6px 10px;border-radius:10px;white-space:nowrap">SMANDA</span> <span>Absensi SMA Negeri 2 Bonai Darussalam</span></div>
+    <div><button class="btn btn-black" id="btnLogin" onclick="openL()">Login</button><button class="btn btn-black hidden" id="btnLogout" onclick="logout()">Logout</button></div>
+  </div>
+  <span id="roleInfo" style="display:none"></span>
+  <div class="card"><h2 style="margin:0">Dashboard Guru</h2><p style="font-size:12px;color:#6b5b8a;margin:6px 0 0" id="headerDesc">Login untuk akses data</p></div>
 </div>
-<span id="roleInfo" style="display:none"></span>
+
+<!-- === INI YANG SCROLL === -->
 <div class="hero">
-<div class="card"><h2 style="margin:0">Dashboard Guru</h2><p style="font-size:12px;color:#6b5b8a;margin:6px 0 0" id="headerDesc">Login untuk akses data</p></div>
-<div class="card"><b>🔥 Data Responsif</b>
-<div class="stat"><div class="s3"><b id="cHadir">0</b><small>Hadir</small></div><div class="s2"><b id="cIzin">0</b><small>Izin</small></div><div class="s1"><b id="cSakit">0</b><small>Sakit</small></div><div class="s4"><b id="cAlfa">0</b><small>Alfa</small></div></div>
-<button class="btn btn-yellow" style="width:100%;margin-top:10px" onclick="window.open('https://dd-ace.vercel.app/', '_blank')">📝 Buka Absensi Siswa</button>
+  <div class="card"><b>🔥 Data Responsif</b>
+  <div class="stat"><div class="s3"><b id="cHadir">0</b><small>Hadir</small></div><div class="s2"><b id="cIzin">0</b><small>Izin</small></div><div class="s1"><b id="cSakit">0</b><small>Sakit</small></div><div class="s4"><b id="cAlfa">0</b><small>Alfa</small></div></div>
+  <button class="btn btn-yellow" style="width:100%;margin-top:10px" onclick="window.open('https://ab-ace.vercel.app/', '_blank')">📝 Buka Absensi Siswa</button>
+  </div>
 </div>
-</div>
+
 <div class="card hidden" id="dashData" style="margin-top:16px">
 <div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0">📋 Data Lengkap</h3></div>
-<div class="filterGrid">
-  <div class="dateWrap" id="dateWrap"><input id="fTanggal" type="date" onchange="onDateChange()"><span class="datePh" id="datePh">📅 Tanggal</span></div>
-  <input id="fNama" class="fInput" placeholder="🔍 Nama..." oninput="render()">
-  <select id="fMapel" class="fInput"></select>
-  <select id="fGuru" class="fInput"></select>
-  <select id="fStatus" class="fInput" onchange="render()"><option value="">Semua Status</option><option>Hadir</option><option>Izin</option><option>Sakit</option><option>Alfa</option></select>
-  <button class="btn btn-yellow" onclick="resetFilter()">Reset</button>
+<div class="filterGrid" id="filterGridNew">
+  <input id="fNama" class="fInput" placeholder="🔍 Cari Nama Siswa..." oninput="onFilterTyping()" style="grid-column:1/-1">
+  <select id="fKelas" class="fInput" onchange="onKelasChange()"><option value="">Semua Kelas</option><option value="X E">X E</option><option value="XI F">XI F</option><option value="XII MIPA">XII MIPA</option></select>
+  <select id="fMapel" class="fInput" onchange="onFilterTyping()"></select>
+  <select id="fGuru" class="fInput" onchange="onFilterTyping()"></select>
+  <select id="fStatus" class="fInput" onchange="onFilterTyping()"><option value="">Semua Status</option><option>Hadir</option><option>Izin</option><option>Sakit</option><option>Alfa</option></select>
+  <div class="dateWrap" id="dateWrap" style="grid-column:1/-1"><input id="fTanggal" type="date" onchange="onDateChange()"><span class="datePh" id="datePh">📅 Pilih Tanggal</span></div>
+  <div style="display:flex;gap:8px;grid-column:1/-1">
+    <button class="btn btn-yellow" style="width:100%;flex:1" onclick="resetFilter()">Reset</button>
+    <button class="btn btn-black" style="width:100%;flex:1;background:#2d1b4e;color:#fff" id="btnTampilkan" onclick="tampilkanData()">🔍 Tampilkan</button>
+  </div>
 </div>
-<p id="infoFilter" style="font-size:11px;color:#6b5b8a;margin:8px 0"></p>
+<p id="infoFilter" style="font-size:11px;color:#6b5b8a;margin:8px 0">Pilih filter lalu klik Tampilkan</p>
 <div id="rekapArea" class="rekapGrid hidden"></div>
 <button class="btn btn-blue" style="width:100%;margin:10px 0 8px" onclick="downloadExcel()">📊 Download Excel</button>
 <div class="tableWrap">
@@ -63,11 +108,36 @@
 </div>
 </div>
 
-<footer><span>XI F</span> Dashboard Guru • Kelas Random ✨ • © <script>document.write(new Date().getFullYear())</script> • Made with 🖤 by ArilCode</footer>
+<footer>Dashboard Guru • © <script>document.write(new Date().getFullYear())</script> • Made with 🖤 by ACE (ArilCode Engineer)</footer>
 
 <div id="loginModal"><div class="loginBox"><h3>Login</h3><input id="email" placeholder="Email"><input id="pass" type="password" placeholder="Password"><div id="eLogin" style="font-size:12px;color:#fff;background:#ff5a5f;border:2px solid #2d1b4e;border-radius:10px;padding:8px 10px;display:none;margin-bottom:8px;font-weight:700"></div><button class="btn btn-yellow" style="width:100%" onclick="login()">Masuk</button><button class="btn" style="width:100%;margin-top:8px" onclick="closeL()">Batal</button></div></div>
 <div id="toast"></div>
 
 <script src="./main.js" type="text/javascript" charset="utf-8"></script>
+<script>
+// shadow pas scroll
+window.addEventListener("scroll", ()=>{
+  const nav = document.getElementById("stickyNavbar");
+  if(!nav) return;
+  if(window.scrollY > 10) nav.classList.add("scrolled");
+  else nav.classList.remove("scrolled");
+});
+
+// simpan fungsi asli
+const _openL_asli = window.openL;
+const _closeL_asli = window.closeL;
+
+window.openL = function(){
+  document.body.classList.add("login-open");
+  if(typeof _openL_asli === 'function') _openL_asli();
+  else document.getElementById("loginModal").style.display = "flex";
+}
+
+window.closeL = function(){
+  document.body.classList.remove("login-open");
+  if(typeof _closeL_asli === 'function') _closeL_asli();
+  else document.getElementById("loginModal").style.display = "none";
+}
+</script>
 </body>
 </html>
