@@ -1,145 +1,158 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap');
-
-*{box-sizing:border-box;font-family:'Fredoka',system-ui}
-body{margin:0;background:#fff8ed;color:#2d1b4e;overflow-x:hidden}
-.wrap{max-width:1100px;margin:auto;padding:12px 12px 0}
-.btn{padding:11px 16px;border-radius:12px;border:2.5px solid #2d1b4e;font-weight:700;cursor:pointer;box-shadow:3px 3px 0 #2d1b4e;background:#fff;font-size:13px;transition:.15s}
-.btn-yellow{background:#ffe26a}.btn-black{background:#2d1b4e;color:#fff}.btn-blue{background:#a0e7e5}
-.card{background:#fff;border:3px solid #2d1b4e;border-radius:20px;padding:14px;box-shadow:4px 4px 0 #2d1b4e;width:100%;overflow:visible}
-.hero{display:grid;grid-template-columns:1.2fr 0.8fr;gap:14px;margin-top:14px}
-@media(max-width:800px){.hero{grid-template-columns:1fr}}
-.stat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
-@media(min-width:400px){.stat{grid-template-columns:repeat(4,1fr)}}
-.stat div{border:2.5px solid #2d1b4e;border-radius:14px;padding:10px;text-align:center}
-.stat b{font-size:22px;display:block}.stat small{font-size:11px;font-weight:700}
-.s1{background:#ffb3c6}.s2{background:#a0e7e5}.s3{background:#b4f8c8}.s4{background:#ffda77}
-.filterGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-@media(min-width:700px){.filterGrid{grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr}}
-.fInput{width:100%;padding:12px;border-radius:12px;border:2.5px solid #2d1b4e;font-size:13px;background:#fff}
-.fInput:disabled{background:#eee;color:#999}
-.tableWrap{width:100%;overflow-x:auto;border:3px solid #2d1b4e;border-radius:16px;background:#fff;padding:4px;margin-top:10px}
-.tableWrap table{width:100%;min-width:1050px;border-collapse:separate;border-spacing:0 8px}
-th{font-size:11px;color:#7a6b96;text-align:left;padding:6px 10px}
-td{background:#fff;border-top:2.5px solid #2d1b4e;border-bottom:2.5px solid #2d1b4e;padding:10px;font-size:13px;white-space:nowrap}
-td:first-child{border-left:2.5px solid #2d1b4e;border-radius:12px 0 0 12px;white-space:normal;max-width:150px}
-td:last-child{border-right:2.5px solid #2d1b4e;border-radius:0 12px 12px 0}
-.badge{padding:4px 10px;border-radius:20px;border:2px solid #2d1b4e;font-size:11px;font-weight:700;display:inline-block}
-.Hadir{background:#b4f8c8}.Izin{background:#a0e7e5}.Sakit{background:#ffb3c6}.Alfa{background:#ffda77}
-.badge-mapel{background:#d8b4fe}.badge-guru{background:#ff8a65}
-#loginModal{position:fixed;inset:0;background:#0006;backdrop-filter:blur(10px);display:none;place-items:center;z-index:99;padding:20px}
-#loginModal.show{display:grid}
-.loginBox{width:100%;max-width:360px;background:#fff;border:3px solid #2d1b4e;border-radius:20px;padding:20px;box-shadow:6px 6px 0 #2d1b4e}
-.loginBox input{width:100%;padding:12px;border-radius:12px;border:2.5px solid #2d1b4e;margin-bottom:8px}
-.hidden{display:none}
-#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(150px);background:#2d1b4e;color:#fff;padding:12px 18px;border-radius:14px;border:2.5px solid #2d1b4e;font-weight:700;font-size:12px;opacity:0;pointer-events:none;transition:all.35s ease;z-index:9999;max-width:90vw;text-align:center;box-shadow:4px 4px 0 #2d1b4e}
-#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-.dateWrap{position:relative;width:100%}.dateWrap input{width:100%;padding:12px;border-radius:12px;border:2.5px solid #2d1b4e;font-size:13px;background:#fff}
-.datePh{position:absolute;left:12px;top:50%;transform:translateY(-50%);pointer-events:none;color:#6b5b8a;font-size:13px;background:#fff;padding:2px 6px;border-radius:6px}
-.dateWrap.has-value.datePh{display:none}
-.roleBadge{padding:4px 8px;border-radius:8px;font-size:10px;font-weight:700;border:2px solid #2d1b4e}
-.role-dev{background:#ffe26a}.role-guru{background:#a0e7e5}
-.editInput{padding:6px 8px;border-radius:8px;border:2px solid #2d1b4e;font-size:11px;width:120px;max-width:120px}
-@media(max-width:600px){.editInput{width:95px;max-width:95px;font-size:10px}}
-
-/* REKAP FULL LEBAR DI HP & DESKTOP */
-.rekapGrid{
-  display:grid !important;
-  grid-template-columns:1fr !important;
-  gap:10px;
-  margin-top:12px;
-  width:100%;
-}
-.rekapBox{
-  width:100% !important;
-  border:2.5px solid #2d1b4e;
-  border-radius:14px;
-  padding:14px 16px;
-  background:#ffe26a;
-  text-align:center;
-}
-.rekapBox h4{
-  text-align:center;
-  margin:0 0 8px 0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:6px;
-}
-.rekapBox div{
-  text-align:center;
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #f59e0b;
 }
 
-@media(min-width:600px){.rekapGrid{grid-template-columns:1fr 1fr}}
-#dashData{overflow:visible!important;padding-bottom:20px}
-footer{margin-top:24px;background:#fff;border-top:3px solid #2d1b4e;padding:18px 12px;text-align:center;font-size:12px;font-weight:700}
-
-#filterGrid{grid-template-columns:1fr 1fr}
-@media(min-width:900px){.filterGrid{grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr 100px}}
-
-/* FIX LAYOUT - HAPUS YANG LAMA */
-#filterGridNew{display:grid !important;grid-template-columns:1fr 1fr !important;gap:10px;margin-top:12px}
-#filterGridNew .fInput{width:100%}
-
-/* BIAR TETAP 2 KOLOM DI HP */
-@media(max-width:600px){
-  #filterGridNew{grid-template-columns:1fr 1fr !important}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* ANIMASI SEMUA TOMBOL */
-.btn{transition:all .18s cubic-bezier(.2,.8,.2,1);will-change:transform,box-shadow}
-.btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:5px 7px 0 #2d1b4e;filter:brightness(1.05)}
-.btn:active{transform:translateY(1px) scale(0.97);box-shadow:2px 2px 0 #2d1b4e}
-.btn-black:hover{background:#3d2a6a}
-.btn-yellow:hover{background:#ffe97a}
-.fInput, .dateWrap input{transition:.15s}
-.fInput:hover, .dateWrap input:hover{transform:translateY(-1px);box-shadow:2px 3px 0 #2d1b4e}
-.fInput:focus, .dateWrap input:focus{transform:translateY(-1px) scale(1.01);box-shadow:3px 4px 0 #2d1b4e;outline:none}
-
-/* INPUT HOVER JUGA */
-.fInput, .dateWrap input{transition:.15s}
-.fInput:hover, .dateWrap input:hover{transform:translateY(-1px);box-shadow:2px 3px 0 #2d1b4e}
-/* .fInput:focus, .dateWrap input:focus{transform:translateY(-1px) scale(1.01);box-shadow:3px 4px 0 #2d1b4e;outline:none} */
-
-/* BADGE KELAS KECIL BIAR GAK JEBOL */
-@media(max-width:400px){#filterGridNew{grid-template-columns:1fr}}
-
-
-/* FIX LAYAR LEBAR - ZOOM KECIL */
-.wrap{
-  max-width:1200px;
-  margin:0 auto;
-  width:100%;
-}
-.hero{
-  display:block !important;
-  width:100% !important;
-}
-.hero .card{
-  width:100% !important;
-  max-width:100% !important;
-  box-sizing:border-box;
-}
-.stat{
-  display:grid !important;
-  grid-template-columns:repeat(4,1fr) !important;
-  gap:8px !important;
-  width:100% !important;
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #1e293b 0%, var(--bg) 60%);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  padding: 24px;
 }
 
-/* Desktop beneran */
-@media (min-width:900px){
-  .stickyNav{
-    padding:14px 20px 14px 20px;
-    margin:-12px -20px 16px -20px;
-  }
-  .filterGrid{
-    grid-template-columns:1fr 1fr !important;
-  }
+.container {
+  width: 100%;
+  max-width: 560px;
+  text-align: center;
 }
 
-/* HP tetep aman */
-@media (max-width:600px){
-  .stat{
-    grid-template-columns:repeat(4,1fr) !important;
-  }
+/* Gears */
+.gears {
+  position: relative;
+  width: 160px;
+  height: 130px;
+  margin: 0 auto 24px;
+  color: var(--accent);
+}
+
+.gear {
+  position: absolute;
+}
+
+.gear-big {
+  width: 100px;
+  height: 100px;
+  left: 0;
+  top: 0;
+  animation: spin 8s linear infinite;
+}
+
+.gear-small {
+  width: 70px;
+  height: 70px;
+  left: 78px;
+  top: 58px;
+  opacity: 0.75;
+  animation: spin 6s linear infinite reverse;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Text */
+h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.subtitle {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* Countdown */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.box {
+  background: var(--card);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 14px 0;
+  width: 92px;
+}
+
+.box span {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.box small {
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Progress */
+.progress {
+  height: 10px;
+  background: var(--card);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+.status {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.contact {
+  margin-top: 36px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.contact a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .countdown { gap: 8px; }
+  .box { width: 78px; }
+  .box span { font-size: 1.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gear { animation: none; }
 }

@@ -1,156 +1,65 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Dashboard Guru</title>
-
-<meta name="description" content="Dashboard Guru • Data Absensi Realtime, Filter Mapel & Guru, Download Excel" />
-
-<!-- Primary Meta Tags -->
-<meta name="title" content="Dashboard Guru - SMA Negeri 2 Bonai Darussalam">
-<meta name="description" content="Dashboard Guru • Data Absensi Realtime, Filter Mapel & Guru, Download Excel">
-
-<!-- Open Graph / Facebook / LinkedIn -->
-<!-- Open Graph / Facebook / LinkedIn -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://dd-ace.vercel.app/">
-<meta property="og:title" content="Dashboard Guru - SMA Negeri 2 Bonai Darussalam">
-<meta property="og:description" content="Dashboard Guru • Data Absensi Realtime, Filter Mapel & Guru, Download Excel">
-<meta property="og:image" content="https://dd-ace.vercel.app/og-guru.png?v=1">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://dd-ace.vercel.app/">
-<meta property="twitter:title" content="Dashboard Guru - SMA Negeri 2 Bonai Darussalam">
-<meta property="twitter:description" content="Dashboard Guru • Data Absensi Realtime, Filter Mapel & Guru, Download Excel">
-<meta property="twitter:image" content="https://dd-ace.vercel.app/og-guru.png?v=1">
-
-<link rel="icon" type="image/png" href="./images/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="./images/favicon.svg" />
-<link rel="shortcut icon" href="./images/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="DashBoard Guru" />
-<link rel="manifest" href="./site.webmanifest" />
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js"></script>
-<link rel="stylesheet" href="./style.css" type="text/css" media="all" />
-<style>
-/* NAVBAR TRANSPARAN + BLUR */
-.stickyNav{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background: rgba(0, 0, 0, 0);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
-  padding:12px 12px 12px 12px;
-  margin:-12px -12px 12px -12px;
-  border-bottom:2px solid rgba(0, 0, 0, 0);
-  transition: all .3s ease;
-}
-/* Pas login kebuka, navbar ilang total */
-body.login-open .stickyNav{
-  opacity:0 !important;
-  pointer-events:none !important;
-  transform:translateY(-100%) !important;
-  visibility:hidden !important;
-}
-#loginModal{
-  z-index:99999 !important;
-  backdrop-filter:none !important;
-  -webkit-backdrop-filter:none !important;
-  background: rgba(0,0,0,0.5) !important;
-}
-.stickyNav.scrolled{
-  background: rgba(66, 68, 90, 0); /* pas di scroll jadi agak solid dikit */
-/*   box-shadow:0 8px 30px rgba(45,27,78,0.18);
-border-bottom:2px solid rgba(45,27,78,0.2); */
-}
-.stickyNav .card{
-  margin-top:10px;
-  margin-bottom:0;
-  background: rgba(0, 0, 0, 0); /* card dalamnya juga ikut transparan dikit */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sedang Maintenance</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<div class="wrap">
+  <main class="container">
+    <div class="gears" aria-hidden="true">
+      <svg class="gear gear-big" viewBox="0 0 100 100">
+        <g fill="currentColor">
+          <circle cx="50" cy="50" r="32"/>
+          <rect x="43" y="6" width="14" height="20" rx="3"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(45 50 50)"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(90 50 50)"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(135 50 50)"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(180 50 50)"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(225 50 50)"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(270 50 50)"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(315 50 50)"/>
+        </g>
+        <circle cx="50" cy="50" r="13" fill="var(--bg)"/>
+      </svg>
+      <svg class="gear gear-small" viewBox="0 0 100 100">
+        <g fill="currentColor">
+          <circle cx="50" cy="50" r="32"/>
+          <rect x="43" y="6" width="14" height="20" rx="3"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(60 50 50)"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(120 50 50)"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(180 50 50)"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(240 50 50)"/>
+          <rect x="43" y="6" width="14" height="20" rx="3" transform="rotate(300 50 50)"/>
+        </g>
+        <circle cx="50" cy="50" r="13" fill="var(--bg)"/>
+      </svg>
+    </div>
 
-<!-- === INI YANG JADI NAVBAR DIAM === -->
-<div id="stickyNavbar" class="stickyNav">
-  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-    <div style="font-weight:700;font-size:15px;line-height:1.2;display:flex;align-items:center;gap:8px"><span style="background:#2d1b4e;color:#fff;padding:6px 10px;border-radius:10px;white-space:nowrap">SMANDA</span> <span>Absensi SMA Negeri 2 Bonai Darussalam</span></div>
-    <div><button class="btn btn-black" id="btnLogin" onclick="openL()">Login</button><button class="btn btn-black hidden" id="btnLogout" onclick="logout()">Logout</button></div>
-  </div>
-  <span id="roleInfo" style="display:none"></span>
-  <div class="card"><h2 style="margin:0">Dashboard Guru</h2><p style="font-size:12px;color:#6b5b8a;margin:6px 0 0" id="headerDesc">Login untuk akses data</p></div>
-</div>
+    <h1>Sedang <span class="accent">Maintenance</span></h1>
+    <p class="subtitle">
+      Kami sedang melakukan pemeliharaan sistem untuk meningkatkan layanan.
+      Mohon maaf atas ketidaknyamanannya, kami akan segera kembali.
+    </p>
 
-<!-- === INI YANG SCROLL === -->
-<div class="hero">
-  <div class="card"><b>🔥 Data Responsif</b>
-  <div class="stat"><div class="s3"><b id="cHadir">0</b><small>Hadir</small></div><div class="s2"><b id="cIzin">0</b><small>Izin</small></div><div class="s1"><b id="cSakit">0</b><small>Sakit</small></div><div class="s4"><b id="cAlfa">0</b><small>Alfa</small></div></div>
-  <button class="btn btn-yellow" style="width:100%;margin-top:10px" onclick="window.open('https://ab-ace.vercel.app/', '_blank')">📝 Buka Absensi Siswa</button>
-  </div>
-</div>
+    <div class="countdown" aria-live="polite">
+      <div class="box"><span id="hours">00</span><small>Jam</small></div>
+      <div class="box"><span id="minutes">00</span><small>Menit</small></div>
+      <div class="box"><span id="seconds">00</span><small>Detik</small></div>
+    </div>
 
-<div class="card hidden" id="dashData" style="margin-top:16px">
-<div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0">📋 Data Lengkap</h3></div>
-<div class="filterGrid" id="filterGridNew">
-  <input id="fNama" class="fInput" placeholder="🔍 Cari Nama Siswa..." oninput="onFilterTyping()" style="grid-column:1/-1">
-  <select id="fKelas" class="fInput" onchange="onKelasChange()"><option value="">Semua Kelas</option><option value="X E">X E</option><option value="XI F">XI F</option><option value="XII MIPA">XII MIPA</option></select>
-  <select id="fMapel" class="fInput" onchange="onFilterTyping()"></select>
-  <select id="fGuru" class="fInput" onchange="onFilterTyping()"></select>
-  <select id="fStatus" class="fInput" onchange="onFilterTyping()"><option value="">Semua Status</option><option>Hadir</option><option>Izin</option><option>Sakit</option><option>Alfa</option></select>
-  <div class="dateWrap" id="dateWrap" style="grid-column:1/-1"><input id="fTanggal" type="date" onchange="onDateChange()"><span class="datePh" id="datePh">📅 Pilih Tanggal</span></div>
-  <div style="display:flex;gap:8px;grid-column:1/-1">
-    <button class="btn btn-yellow" style="width:100%;flex:1" onclick="resetFilter()">Reset</button>
-    <button class="btn btn-black" style="width:100%;flex:1;background:#2d1b4e;color:#fff" id="btnTampilkan" onclick="tampilkanData()">🔍 Tampilkan</button>
-  </div>
-</div>
-<p id="infoFilter" style="font-size:11px;color:#6b5b8a;margin:8px 0">Pilih filter lalu klik Tampilkan</p>
-<div id="rekapArea" class="rekapGrid hidden"></div>
-<button class="btn btn-blue" style="width:100%;margin:10px 0 8px" onclick="downloadExcel()">📊 Download Excel</button>
-<div class="tableWrap">
-<table><thead><tr><th>NAMA</th><th>STATUS</th><th>GURU</th><th>MAPEL</th><th>TANGGAL</th><th>JAM</th><th>AKSI</th></tr></thead><tbody id="tbody"></tbody></table>
-</div>
-<button class="btn" style="width:100%;background:#ff5a5f;color:#fff;margin-top:10px" onclick="hapusSemua()">Hapus Data Terfilter</button>
-</div>
-</div>
+    <div class="progress" role="progressbar" aria-label="Progres maintenance">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <p class="status" id="status">Memperbarui sistem...</p>
 
-<footer>Dashboard Guru • © <script>document.write(new Date().getFullYear())</script> • Made with 🖤 by ACE (ArilCode Engineer)</footer>
+    <p class="contact">
+      Butuh bantuan? Hubungi
+      <a href="mailto:support@example.com">arilhidayat202@gmail.com</a>
+    </p>
+  </main>
 
-<div id="loginModal"><div class="loginBox"><h3>Login</h3><input id="email" placeholder="Email"><input id="pass" type="password" placeholder="Password"><div id="eLogin" style="font-size:12px;color:#fff;background:#ff5a5f;border:2px solid #2d1b4e;border-radius:10px;padding:8px 10px;display:none;margin-bottom:8px;font-weight:700"></div><button class="btn btn-yellow" style="width:100%" onclick="login()">Masuk</button><button class="btn" style="width:100%;margin-top:8px" onclick="closeL()">Batal</button></div></div>
-<div id="toast"></div>
-
-<script src="./main.js" type="text/javascript" charset="utf-8"></script>
-<script>
-// shadow pas scroll
-window.addEventListener("scroll", ()=>{
-  const nav = document.getElementById("stickyNavbar");
-  if(!nav) return;
-  if(window.scrollY > 10) nav.classList.add("scrolled");
-  else nav.classList.remove("scrolled");
-});
-
-// simpan fungsi asli
-const _openL_asli = window.openL;
-const _closeL_asli = window.closeL;
-
-window.openL = function(){
-  document.body.classList.add("login-open");
-  if(typeof _openL_asli === 'function') _openL_asli();
-  else document.getElementById("loginModal").style.display = "flex";
-}
-
-window.closeL = function(){
-  document.body.classList.remove("login-open");
-  if(typeof _closeL_asli === 'function') _closeL_asli();
-  else document.getElementById("loginModal").style.display = "none";
-}
-</script>
+  <script src="./script.js"></script>
 </body>
 </html>
